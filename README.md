@@ -44,6 +44,10 @@ OpenFDA
 
 - https://open.fda.gov/
 
+OpenFDA contact for submitting tool
+
+- open@fda.hhs.gov
+
 OpenFDA tools (using API)
 
 - https://open.fda.gov/tools/
