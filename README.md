@@ -1,6 +1,6 @@
-# SafeDrugs
+![](ppt/logo.png)
 
-A web framework for interacting with drug safety data
+A framework for interacting with drug safety data
 
 ## Goal
 
