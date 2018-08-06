@@ -111,3 +111,6 @@ ppt/
 
 #pem
 *.pem
+
+#Stupid Mac stuff
+*.DS_Store
