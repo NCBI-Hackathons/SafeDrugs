@@ -15,12 +15,12 @@ app.config.supress_callback_exceptions=True
 
 #####load and process data#####
 
-data = feather.read_feather(source='data/aeolus_top5drugs.feather',nthreads=16,columns=['drug_concept_name','age_category'])
+data = feather.read_feather(source='data/aeolus_top5drugs.feather',nthreads=16,columns=['drug_concept_name','age_cat'])
 
 uniq_drugs = data.drug_concept_name.unique()
 uniq_drugs = uniq_drugs[np.argsort(uniq_drugs)]
 
-all_age_cat_counts = (data.groupby(['age_category'])
+all_age_cat_counts = (data.groupby(['age_cat'])
 						  .apply(lambda x : x.shape[0])
 					 )
 all_age_cat_counts_x = all_age_cat_counts.index.tolist()
@@ -173,7 +173,7 @@ def callback_drug(value):
 def callback_drug_reports_at_ages_bars(value):
 
 	series = (data.query('drug_concept_name == @value')
-						   .groupby(['age_category'])
+						   .groupby(['age_cat'])
 						   .apply(lambda x : x.shape[0])
 						   )
 	x = series.index.tolist()
