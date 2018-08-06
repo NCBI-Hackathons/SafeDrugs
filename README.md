@@ -6,6 +6,20 @@ A web framework for interacting with drug safety data
 
 - Using a standardized dataset of adverse drug reactions from the FDA (AEOLUS, see resources for link to paper), provide a web app for interacting and visualizing with this unique data source. 
 
+## Packages required for running app
+
+pip install:
+
+dash==0.22.0
+dash_core_components==0.26.0
+dash_html_components==0.11.0
+dash_table_experiments==0.6.0
+plotly==3.1.0
+Markdown==2.6.11
+pyarrow==0.9.0
+numpy==1.13.3
+pandas==0.23.0
+
 ## Some Background
 
 - See introduction in app
