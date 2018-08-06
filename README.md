@@ -1,4 +1,4 @@
-![](logo/logo.png)
+<img src="logo/logo.png"></img>
 
 A framework for interacting with drug safety data
 
