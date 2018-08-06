@@ -108,3 +108,6 @@ data/
 
 #Ppt
 ppt/
+
+#pem
+*.pem
