@@ -1,4 +1,4 @@
-![](ppt/logo.png)
+![](logo/logo.png)
 
 A framework for interacting with drug safety data
 
