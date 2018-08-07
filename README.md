@@ -1,6 +1,11 @@
 <img src="logo/logo.png"></img>
 
-A framework for interacting with drug safety data
+## A framework for interacting with drug safety data
+
+* [Quickstart](https://linktojupyternotebook)
+
+## Table of contents
+## intro
 
 ## Goal
 
@@ -43,6 +48,11 @@ pandas==0.23.0
 - Provide commenting/documenting of code. Need to explain how we are using Dash API. 
 
 - Docker-ize so that individuals can download the app and data and spin up on their local machine without needing to download libraries. 
+
+## Use cases
+* [Data visualization](https://linktojupyternotebook)
+* [Data analysis](https://linktojupyternotebook)
+* [Web app](https://linktoDashwebapp)
 
 ## Resources
 
