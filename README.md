@@ -2,6 +2,8 @@
 
 A framework for interacting with drug safety data
 
+* [Quickstart](https://linktojupyternotebook)
+
 ## Table of contents
 ## intro
 
