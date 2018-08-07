@@ -49,6 +49,11 @@ pandas==0.23.0
 
 - Docker-ize so that individuals can download the app and data and spin up on their local machine without needing to download libraries. 
 
+## Use cases
+* [Data visualization](link to jupyter notebook)
+* [Data analysis](link to jupyter notebook)
+* [Web app](link to Dash web app)
+
 ## Resources
 
 Plotly/dash github repository
