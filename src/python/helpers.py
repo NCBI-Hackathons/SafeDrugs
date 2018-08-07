@@ -19,6 +19,15 @@ def plot_settings(style='seaborn-whitegrid'):
 
 
 
+def clean_gender(data):
+	"""
+	Only use M and F in gender_code
+	"""
+	
+	return data.query('gender_code in ["M","F"]')
+
+
+ 
 def dropdown(arr,layout=None):
 	"""
 	Helper for pywidget dropdown
