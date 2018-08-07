@@ -5,7 +5,7 @@
 * [Quickstart](https://linktojupyternotebook)
 
 ## Table of contents
-## intro
+* [Goal](#Goal)
 
 ## Goal
 
