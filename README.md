@@ -17,8 +17,8 @@
 
 ### Installation
 
-cd path/to/SafeDrug/directory
-pip install -r requirements.txt
+cd path/to/SafeDrug/directory <br />
+pip install -r requirements.txt <br />
 
 ### Introduction
 
