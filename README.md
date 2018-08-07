@@ -7,11 +7,11 @@
 ## Table of contents
 * [Goal](#Goal)
 
-### Goal
+###Goal
 
 - Using a standardized dataset of adverse drug reactions from the FDA (AEOLUS, see resources for link to paper), provide a web app for interacting and visualizing with this unique data source. 
 
-### Packages required for running app
+###Packages required for running app
 
 pip install:
 
@@ -25,7 +25,7 @@ pyarrow==0.9.0
 numpy==1.13.3
 pandas==0.23.0
 
-### Some Background
+###Some Background
 
 - See introduction in app
 
