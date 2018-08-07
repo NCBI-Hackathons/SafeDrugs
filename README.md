@@ -7,11 +7,11 @@
 ## Table of contents
 * [Goal](#Goal)
 
-## Goal
+### Goal
 
 - Using a standardized dataset of adverse drug reactions from the FDA (AEOLUS, see resources for link to paper), provide a web app for interacting and visualizing with this unique data source. 
 
-## Packages required for running app
+### Packages required for running app
 
 pip install:
 
@@ -25,7 +25,7 @@ pyarrow==0.9.0
 numpy==1.13.3
 pandas==0.23.0
 
-## Some Background
+### Some Background
 
 - See introduction in app
 
@@ -33,7 +33,7 @@ pandas==0.23.0
 
 - As is, the FDA data is not standardized and so contains redundancy and ambiguity in their data (e.g. aspirin and aspirin 81mg). Using a standardized version of their data can provide additional clarity representing ADR data. Our app would be another community tool to possibly add to their online portfolio (see OpenFDA community tools). 
 
-## Possible tasks
+### Possible tasks
 
 - Outline and execute approaches for analyzing AEOLUS data. Make sure they are informative, concise, and can be somewhat unique to what has already been provided (use demographic information?). 
 
@@ -49,12 +49,12 @@ pandas==0.23.0
 
 - Docker-ize so that individuals can download the app and data and spin up on their local machine without needing to download libraries. 
 
-## Use cases
+### Use cases
 * [Data visualization](https://linktojupyternotebook)
 * [Data analysis](https://linktojupyternotebook)
 * [Web app](https://linktoDashwebapp)
 
-## Resources
+### Resources
 
 Plotly/dash github repository
 
