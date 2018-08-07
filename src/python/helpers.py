@@ -94,7 +94,8 @@ def plot(series,kind):
 	"""
 	helper for plotting
 	"""
-	
+
+
 	g = series.plot(kind=kind)
 
 	return g
