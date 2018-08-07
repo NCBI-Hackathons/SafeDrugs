@@ -2,6 +2,9 @@
 
 A framework for interacting with drug safety data
 
+## Table of contents
+## intro
+
 ## Goal
 
 - Using a standardized dataset of adverse drug reactions from the FDA (AEOLUS, see resources for link to paper), provide a web app for interacting and visualizing with this unique data source. 
