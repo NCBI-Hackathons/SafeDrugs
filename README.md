@@ -50,9 +50,9 @@ pandas==0.23.0
 - Docker-ize so that individuals can download the app and data and spin up on their local machine without needing to download libraries. 
 
 ## Use cases
-* [Data visualization](https://link to jupyter notebook)
-* [Data analysis](https://link to jupyter notebook)
-* [Web app](https://link to Dash web app)
+* [Data visualization](https://linktojupyternotebook)
+* [Data analysis](https://linktojupyternotebook)
+* [Web app](https://linktoDashwebapp)
 
 ## Resources
 
