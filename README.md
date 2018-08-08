@@ -11,17 +11,19 @@
 * [Use Cases](#use-cases)
 * [Resources](#resources)
 
-### Goal
+### Goal <a name="goal"></a>
 
 - Using a standardized dataset of adverse drug reactions from the FDA (AEOLUS, see resources for link to paper), provide a web app for interacting and visualizing with this unique data source. 
 
-### Installation
+### Installation <a name="installation"></a>
 
+```
 git clone git@github.com:NCBI-Hackathons/SafeDrugs.git <br />
 cd path/to/SafeDrug/directory <br />
 pip install -r requirements.txt <br />
+```
 
-### Introduction
+### Introduction <a name="introduction"></a>
 
 - See introduction in app
 
@@ -29,28 +31,13 @@ pip install -r requirements.txt <br />
 
 - As is, the FDA data is not standardized and so contains redundancy and ambiguity in their data (e.g. aspirin and aspirin 81mg). Using a standardized version of their data can provide additional clarity representing ADR data. Our app would be another community tool to possibly add to their online portfolio (see OpenFDA community tools). 
 
-### Possible tasks
+### Use cases <a name="use-cases"></a>
 
-- Outline and execute approaches for analyzing AEOLUS data. Make sure they are informative, concise, and can be somewhat unique to what has already been provided (use demographic information?). 
-
-- How to host app? How to host data (it's 6.36 GBs)? 
-
-- Will the FDA accept this app as a tool? If yes, how?
-
-- Design the app. What is the best look and feel for the app? We can style using CSS.
-
-- Can we query the data without having to load everything into memory? Need to make loading the app and transitioning within/between features seamless.
-
-- Provide commenting/documenting of code. Need to explain how we are using Dash API. 
-
-- Docker-ize so that individuals can download the app and data and spin up on their local machine without needing to download libraries. 
-
-### Use cases
 * [Data visualization](https://linktojupyternotebook)
 * [Data analysis](https://linktojupyternotebook)
 * [Web app](https://linktoDashwebapp)
 
-### Resources
+### Resources <a name="resources"></a>
 
 Plotly/dash github repository
 
