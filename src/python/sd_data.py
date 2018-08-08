@@ -23,7 +23,7 @@ class file_connector:
         return uniq_vals
         
 
-    def counts_by_feature(feature, query=""):
+    def counts_by_feature(self, feature, query=""):
         """
         return outcomes data counts for a given feature, e.g. report_year, age_category, drug_category.
         if "query" is provided, will first filter the dataset on that query string.
@@ -36,7 +36,7 @@ class file_connector:
             foo = counts_by_feature("report_year", 'gender_code == "M"')
         """
 
-        ds = data.query(query) if query else data
+        ds = self.data.query(query) if query else self.data
                   
         series = (ds.groupby([feature])
                   .apply(lambda x : x.shape[0]))
@@ -45,10 +45,10 @@ class file_connector:
         y_norm = np.round((counts_y / counts.sum()) * 100,0)
 
         return {
-            'series': counts,
-            'x': counts_x,
-            'y': counts_y,
-            'y_norm': counts_y_norm
+            'series': series,
+            'x': x,
+            'y': y,
+            'y_norm': y_norm
         }
     
 
