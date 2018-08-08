@@ -11,7 +11,7 @@
 
 ### Goal <a name="goal"></a>
 
-- Using a standardized dataset of adverse drug reactions from the FDA (AEOLUS, see resources for link to paper), provide a web app as well as a set of Jupyter notebooks for interacting and visualizing with this unique data source. 
+- Using a standardized dataset of adverse drug reactions from the FDA (AEOLUS, see [resources](#resources) for link to paper), provide a web app as well as a set of Jupyter notebooks for interacting and visualizing with this unique data source. 
 
 ### Installation <a name="installation"></a>
 
