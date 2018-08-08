@@ -17,6 +17,7 @@
 
 ### Installation
 
+git clone git@github.com:NCBI-Hackathons/SafeDrugs.git <br />
 cd path/to/SafeDrug/directory <br />
 pip install -r requirements.txt <br />
 
