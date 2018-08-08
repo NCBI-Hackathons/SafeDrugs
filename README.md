@@ -2,7 +2,7 @@
 
 ## A framework for interacting with drug safety data
 
-* [Quickstart](https://linktojupyternotebook)
+* [Quickstart](https://github.com/NCBI-Hackathons/SafeDrugs/blob/master/sandbox/feature_drugs_and_outcomes.ipynb)
 
 ## Table of contents
 * [Goal](#goal)
