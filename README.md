@@ -70,30 +70,23 @@ Any issues in running the notebooks or apps, as well as wanting to modify or add
 
 ### Resources <a name="resources"></a>
 
-Plotly/dash github repository
+- [Plotly/dash github repository](https://github.com/plotly/dash)
 
-- https://github.com/plotly/dash
 
-Dash User Guide
+- [Dash User Guide](https://dash.plot.ly/)
 
-- https://dash.plot.ly/
 
-OpenFDA
+- [OpenFDA](https://open.fda.gov/)
 
-- https://open.fda.gov/
 
-OpenFDA tools (using API)
+- [OpenFDA tools (using API)](https://open.fda.gov/tools/)
 
-- https://open.fda.gov/tools/
 
-OpenFDA Community Apps
+- [OpenFDA Community Apps](https://open.fda.gov/community/)
 
-- https://open.fda.gov/community/
 
-AEOLUS paper
+- [AEOLUS paper](https://www.nature.com/articles/sdata201626)
 
-- https://www.nature.com/articles/sdata201626
 
-Unified Medical Language System Quick Start Guide
+- [Unified Medical Language System Quick Start Guide](https://www.nlm.nih.gov/research/umls/quickstart.html)
 
-- https://www.nlm.nih.gov/research/umls/quickstart.html
