@@ -112,7 +112,88 @@ feature_drugs_page = html.Div(
 
 		html.Hr(),
 
-		html.Div(style={},children=[])
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Drug Class'),
+
+				html.H4('The Anatomical Thearapeutic Classification (ATC) is a standard vocabulary that categorizes drugs within domains such as organ system, mechanism of action, etc. Please choose the ATC class of drugs you want to view.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('How many reports?'),
+
+				dcc.Graph(id='drug-class-num-reports')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Frequency across years of reporting'),
+
+				html.H4('Reports of ADRs were given in different years, where reporting may be more or less frequent for random reasons, or because of popular events such as news and drug releases.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='drug-class-num-reports-across-report-years')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Breakdown of reporting based on sex'),
+
+				html.H4('Reporting of ADRs can be by males or females, which can vary in reporting behavior as well as have different predisposition to drug use.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='drug-class-num-reports-across-report-years-by-sex')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Breakdown of reporting based on sex and age'),
+
+				html.H4('Reporting of ADRs can be by males or females, as well as at different ages. Patient demographics can influence reporting as well as predisposition to drug use.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='drug-class-num-reports-across-report-years-by-sex-and-age')
+
+			])
+		
 		]
 	),
 
@@ -142,7 +223,87 @@ feature_outcomes_page = html.Div(
 
 		html.Hr(),
 
-		html.Div(style={},children=[])
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Number of Adverse Reactions'),
+
+				html.H4('Patients may report one or many adverse reactions to a drug, which can either be causal or anecdotal (i.e caused by many factors) as well as reported more frequently than others. Choose how many adverse reactions you want to view.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('How many reports?'),
+
+				dcc.Graph(id='outcomes-num-reports')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Frequency across years of reporting'),
+
+				html.H4('Reports of ADRs were given in different years, where reporting may be more or less frequent for random reasons, or because of popular events such as news and drug releases.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='outcomes-num-reports-across-report-years')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Breakdown of reporting based on sex'),
+
+				html.H4('Reporting of ADRs can be by males or females, which can vary in reporting behavior as well as have different predisposition to drug use.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='outcomes-num-reports-across-report-years-by-sex')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Breakdown of reporting based on sex and age'),
+
+				html.H4('Reporting of ADRs can be by males or females, as well as at different ages. Patient demographics can influence reporting as well as predisposition to drug use.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='outcomes-num-reports-across-report-years-by-sex-and-age')
+
+			])
 		]
 	),
 
@@ -172,7 +333,87 @@ feature_drugs_and_outcomes_page = html.Div(
 
 		html.Hr(),
 
-		html.Div(style={},children=[])
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Adverse drug reactions'),
+
+				html.H4('ADRs that are reported may be more or less frequent in the population. Choose the number of ADRs you would like to view, with the top being the most frequent ADR in the dataset.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('How many reports?'),
+
+				dcc.Graph(id='adr-num-reports')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Frequency across years of reporting'),
+
+				html.H4('Reports of ADRs were given in different years, where reporting may be more or less frequent for random reasons, or because of popular events such as news and drug releases.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='adr-num-reports-across-report-years')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Breakdown of reporting based on sex'),
+
+				html.H4('Reporting of ADRs can be by males or females, which can vary in reporting behavior as well as have different predisposition to drug use.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='adr-num-reports-across-report-years-by-sex')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				html.H2('Breakdown of reporting based on sex and age'),
+
+				html.H4('Reporting of ADRs can be by males or females, as well as at different ages. Patient demographics can influence reporting as well as predisposition to drug use.')
+
+			]),
+
+		html.Div(
+			className='col-md-6',
+			style={'text-align' : 'center'},
+			children=[
+
+				dcc.Graph(id='adr-num-reports-across-report-years-by-sex-and-age')
+
+			])
 		]
 	),
 
@@ -306,7 +547,10 @@ def callback_drug_reports_at_ages_bars(value):
 			}
 
 #enable bootstrap styling
-external_css = [["https://bootswatch.com/3/paper/bootstrap.css"]]
+external_css = [
+					["https://bootswatch.com/3/paper/bootstrap.css"],
+					["docs/custom.css"]
+				]
 
 for css in external_css:
 	app.css.append_css({"external_url": css})
