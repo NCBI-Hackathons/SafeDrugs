@@ -1,10 +1,10 @@
 <img src="logo/logo.png"></img>
 
-## A framework for interacting with drug safety data
+### <p align="center"> A framework for interacting with drug safety data </p> 
 
 * [Quickstart](https://github.com/NCBI-Hackathons/SafeDrugs/blob/master/sandbox/feature_drugs_and_outcomes.ipynb)
 
-## Table of contents
+### Table of contents
 * [Goal](#goal)
 * [Installation](#installation)
 * [Introduction](#introduction)
