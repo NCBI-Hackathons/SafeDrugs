@@ -20,7 +20,7 @@ git clone git@github.com:NCBI-Hackathons/SafeDrugs.git
 cd path-to-SafeDrug-directory 
 pip install -r requirements.txt
 ```
-The app is run by python 3. If you don't have it, please install python 3 first. You can find out how to install it *[here](#https://www.python.org/downloads/).
+- The app is run by python 3. If you don't have it, please install python 3 first. You can find out how to install it *[here](#https://www.python.org/downloads/).
 
 ### Introduction <a name="introduction"></a>
 
