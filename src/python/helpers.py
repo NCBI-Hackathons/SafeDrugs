@@ -27,7 +27,7 @@ def clean_gender(data):
 	return data.query('gender_code in ["M","F"]')
 
 
- 
+
 def dropdown(arr,layout=None):
 	"""
 	Helper for pywidget dropdown
@@ -38,7 +38,7 @@ def dropdown(arr,layout=None):
 	import ipywidgets as w
 
 	if layout is None:
-		layout = w.Layout(width='30%', display='flex')
+		layout = w.Layout(width='100%', display='flex')
 	
 	return w.Dropdown(options = arr,layout=layout)
 
