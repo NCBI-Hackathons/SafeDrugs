@@ -17,18 +17,10 @@ import sd_plot
 app = dash.Dash()
 app.config.supress_callback_exceptions=True
 
-#####load and process data#####
-#data = feather.read_feather(source='data/aeolus_top5drugs.feather',nthreads=16)
-#uniq_drugs = data.drug_concept_name.unique()
-#uniq_drugs = uniq_drugs[np.argsort(uniq_drugs)]
-#all_age_cat_counts = (data.groupby(['age_cat']).apply(lambda x : x.shape[0]))
-#all_age_cat_counts_x = all_age_cat_counts.index.tolist()
-#all_age_cat_counts_y = all_age_cat_counts.values
-#all_age_cat_counts_y_norm = np.round((all_age_cat_counts_y / all_age_cat_counts.sum()) * 100,0)
-
 data = sd_data.file_connector("data/aeolus_top5drugs.feather")
 uniq_drugs = data.unique_values("drug_concept_name")
-        
+all_drugs = data.counts_by_feature("age_cat")
+
 ##########
 
 app.layout = html.Div(
@@ -503,7 +495,6 @@ def callback_drug_reports_at_ages_bars(value):
         y_legend = "Percentage of reports"
         this_drug_title = '{}'.format(value)
         all_drugs_title = "All drugs"
-        all_drugs = data.counts_by_feature("age_cat")        
         this_drug = data.counts_by_feature("age_cat", 'drug_concept_name == "' + value + '"')
         return sd_plot.bar_plot(title, x_legend, y_legend, this_drug, all_drugs, this_drug_title, all_drugs_title)
 
