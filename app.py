@@ -18,7 +18,27 @@ app = dash.Dash()
 app.config.supress_callback_exceptions=True
 
 data = sd_data.file_connector("data/aeolus_top5drugs.feather")
+
 uniq_drugs = data.unique_values("drug_concept_name")
+uniq_drugs_list = []
+for d in uniq_drugs:
+	tmp = { 'label' : d, 'value' : d}
+	uniq_drugs_list.append(tmp)
+
+drug_classes = [col for col in data.data.columns if 'atc' in col]
+drug_classes.append('atc_5th')
+drug_classes_list = []
+for d in drug_classes:
+	tmp = { 'label' : d, 'value' : d}
+	if d == 'atc_5th':
+		tmp = { 'label' : d, 'value' : 'drug_concept_name'}
+	drug_classes_list.append(tmp)
+drugs_in_drug_classes = {}
+for i in range(len(drug_classes_list)):
+	col = drug_classes_list[i]['value']
+	drugs_in_drug_classes[col] = data.data[col].unique()
+
+
 all_drugs = data.counts_by_feature("age_cat")
 
 ##########
@@ -112,9 +132,22 @@ feature_drugs_page = html.Div(
 
 				html.H2('Drug Class'),
 
-				html.H4('The Anatomical Thearapeutic Classification (ATC) is a standard vocabulary that categorizes drugs within domains such as organ system, mechanism of action, etc. Please choose the ATC class of drugs you want to view.')
+				html.H4('The Anatomical Thearapeutic Classification (ATC) is a standard vocabulary that categorizes drugs within domains such as organ system, mechanism of action, etc. Please choose the ATC class of drugs you want to view.'),
 
-			]),
+				dcc.Dropdown(
+							id="chosen-drug-class-input",
+							options=drug_classes_list,
+							value=[drug_classes_list[i]['label'] for i in [1]],
+							clearable=False
+							),
+
+				html.Br(),
+
+				dcc.Dropdown(
+							id='chosen-drug-class-output',
+							multi=True
+						)
+				]),
 
 		html.Div(
 			className='col-md-6',
@@ -476,10 +509,38 @@ def display_page(pathname):
 		return index_page
 
 
+#get list of drugs or drug categories based on drug class chosen
+@app.callback(
+	dash.dependencies.Output('chosen-drug-class-output','options'),
+	[dash.dependencies.Input('chosen-drug-class-input','value')])
+def set_chosen_drug_class_options(value):
+	return [{ 'label' : c, 'value' : c} for c in drugs_in_drug_classes[value]]
+
+#get list of drugs or drug categories based on drug class chosen
+@app.callback(
+	dash.dependencies.Output('chosen-drug-class-output','value'),
+	[dash.dependencies.Input('chosen-drug-class-input','value')])
+def set_chosen_drug_class_value(available_options):
+	return available_options
+
+@app.callback(
+	dash.dependencies.Output('drug-class-num-reports','options'),
+	[dash.dependencies.Input('chosen-drug-class-input','value'),
+	dash.dependencies.Input('chosen-drug-class-output','value')])
+def plot_drug_class_num_reports(col, classes):
+	title = ''
+	x_legend = "classes"
+	y_legend = "Number of reports"
+	dat = data.counts_by_feature( "report_year" ,'{0} in {1}'.format(col,classes))
+	return sd_plot.bar_plot(title, x_legend, y_legend, trace1=dat, t1name="Drugs",trace2=False,t2name=False)
+
+
+
+
 #Show number of patients taking selected drug in dataset
 @app.callback(
 	dash.dependencies.Output('drug_output', 'children'),
-	[dash.dependencies.Input('drug_count', 'value')])
+	[dash.dependencies.Input('drug_count', 'value'),])
 def callback_drug(value):
 	return 'There are {} patients that reported taking {}'.format(
 		data.count('drug_concept_name=="' + value + '"'),
@@ -490,15 +551,15 @@ def callback_drug(value):
 	dash.dependencies.Output('drug-reports-at-ages','figure'),
 	[dash.dependencies.Input('drug_count','value')])
 def callback_drug_reports_at_ages_bars(value):
-        title = 'Patients taking {} at different age intervals'.format(value)
-        x_legend = "Age category"
-        y_legend = "Percentage of reports"
-        this_drug_title = '{}'.format(value)
-        all_drugs_title = "All drugs"
-        this_drug = data.counts_by_feature("age_cat", 'drug_concept_name == "' + value + '"')
-        return sd_plot.bar_plot(title, x_legend, y_legend, this_drug, all_drugs, this_drug_title, all_drugs_title)
+		  title = 'Patients taking {} at different age intervals'.format(value)
+		  x_legend = "Age category"
+		  y_legend = "Percentage of reports"
+		  this_drug_title = '{}'.format(value)
+		  all_drugs_title = "All drugs"
+		  this_drug = data.counts_by_feature("age_cat", 'drug_concept_name == "' + value + '"')
+		  return sd_plot.bar_plot(title, x_legend, y_legend, this_drug, all_drugs, this_drug_title, all_drugs_title)
 
-        
+		  
 #enable bootstrap styling
 external_css = [
 					["https://bootswatch.com/3/paper/bootstrap.css"],
