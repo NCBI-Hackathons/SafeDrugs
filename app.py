@@ -8,26 +8,27 @@ from textwrap import dedent
 from pyarrow import feather
 import numpy as np
 import pandas as pd
+import sys
+sys.path.append('./src/python')
 
+import sd_data
+import sd_plot
 
 app = dash.Dash()
 app.config.supress_callback_exceptions=True
 
 #####load and process data#####
+#data = feather.read_feather(source='data/aeolus_top5drugs.feather',nthreads=16)
+#uniq_drugs = data.drug_concept_name.unique()
+#uniq_drugs = uniq_drugs[np.argsort(uniq_drugs)]
+#all_age_cat_counts = (data.groupby(['age_cat']).apply(lambda x : x.shape[0]))
+#all_age_cat_counts_x = all_age_cat_counts.index.tolist()
+#all_age_cat_counts_y = all_age_cat_counts.values
+#all_age_cat_counts_y_norm = np.round((all_age_cat_counts_y / all_age_cat_counts.sum()) * 100,0)
 
-data = feather.read_feather(source='data/aeolus_top5drugs.feather',nthreads=16)
-
-uniq_drugs = data.drug_concept_name.unique()
-uniq_drugs = uniq_drugs[np.argsort(uniq_drugs)]
-
-all_age_cat_counts = (data.groupby(['age_cat'])
-						  .apply(lambda x : x.shape[0])
-					 )
-all_age_cat_counts_x = all_age_cat_counts.index.tolist()
-all_age_cat_counts_y = all_age_cat_counts.values
-all_age_cat_counts_y_norm = np.round((all_age_cat_counts_y / all_age_cat_counts.sum()) * 100,0)
-
-
+data = sd_data.file_connector("data/aeolus_top5drugs.feather")
+uniq_drugs = data.unique_values("drug_concept_name")
+        
 ##########
 
 app.layout = html.Div(
@@ -489,7 +490,7 @@ def display_page(pathname):
 	[dash.dependencies.Input('drug_count', 'value')])
 def callback_drug(value):
 	return 'There are {} patients that reported taking {}'.format(
-		data.query('drug_concept_name==@value').count().values[0],
+		data.count('drug_concept_name=="' + value + '"'),
 		value)
 
 #Update bar graph for drug
@@ -497,55 +498,16 @@ def callback_drug(value):
 	dash.dependencies.Output('drug-reports-at-ages','figure'),
 	[dash.dependencies.Input('drug_count','value')])
 def callback_drug_reports_at_ages_bars(value):
+        title = 'Patients taking {} at different age intervals'.format(value)
+        x_legend = "Age category"
+        y_legend = "Percentage of reports"
+        this_drug_title = '{}'.format(value)
+        all_drugs_title = "All drugs"
+        all_drugs = data.counts_by_feature("age_cat")        
+        this_drug = data.counts_by_feature("age_cat", 'drug_concept_name == "' + value + '"')
+        return sd_plot.bar_plot(title, x_legend, y_legend, this_drug, all_drugs, this_drug_title, all_drugs_title)
 
-	series = (data.query('drug_concept_name == @value')
-						   .groupby(['age_cat'])
-						   .apply(lambda x : x.shape[0])
-						   )
-	x = series.index.tolist()
-	y = series.values
-	y_norm = np.round((series.values / series.sum()) * 100,0)
-
-	drug_trace = go.Bar(
-						x=x,
-						y=y_norm,
-						name='{}'.format(value),
-						text=['{} reports'.format(i) for i in y],
-						marker=go.Marker(
-							color='rgb(55, 83, 109)'
-						)
-					)
-
-	all_trace = go.Bar(
-						x=all_age_cat_counts_x,
-						y=all_age_cat_counts_y_norm,
-						name='All drugs',
-						text=['{} reports'.format(i) for i in all_age_cat_counts_y],
-						marker=go.Marker(
-							color='rgb(180,180,180)'
-						)
-					)
-	return { 'data' : [
-					all_trace,drug_trace
-					],
-				'layout' : go.Layout(
-					title='Patients taking {} at different age intervals'.format(value),
-					showlegend=True,
-					yaxis = dict(
-						title="Percentage of reports",
-						type='-'
-					),
-					xaxis = dict(
-						title="Age category"
-					),
-					legend=go.Legend(
-						x=0,
-						y=1.0
-					),
-					margin=go.Margin(l=40, r=20, t=40, b=100)
-				)
-			}
-
+        
 #enable bootstrap styling
 external_css = [
 					["https://bootswatch.com/3/paper/bootstrap.css"],

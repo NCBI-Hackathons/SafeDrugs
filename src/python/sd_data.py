@@ -21,7 +21,10 @@ class file_connector:
         uniq_vals = self.data[column].unique()
         uniq_vals = uniq_vals[np.argsort(uniq_vals)]
         return uniq_vals
-        
+
+    def count(self, query):
+        return self.data.query(query).count().values[0]
+            
 
     def counts_by_feature(self, feature, query=""):
         """
@@ -40,9 +43,9 @@ class file_connector:
                   
         series = (ds.groupby([feature])
                   .apply(lambda x : x.shape[0]))
-        x = counts.index.tolist()
-        y = counts.values
-        y_norm = np.round((counts_y / counts.sum()) * 100,0)
+        x = series.index.tolist()
+        y = series.values
+        y_norm = np.round((y / series.sum()) * 100,0)
 
         return {
             'series': series,
