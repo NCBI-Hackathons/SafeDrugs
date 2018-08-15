@@ -40,19 +40,19 @@ pip3 install -r requirements.txt
 To interact with the data in the Jupyter notebooks, follow the installation procedure, and view the feature notebooks:=. For example, to view drug information execute:
 
 ```
-jupyter notebook feature_drugs.ipynb
+jupyter notebook sandbox/feature_drugs.ipynb
 ```
 
 To view adverse reaction information, execute:
 
 ```
-jupyter notebook feature_outcomes.ipynb
+jupyter notebook sandbox/feature_outcomes.ipynb
 ```
 
 To view ADR information, execute:
 
 ```
-jupyter notebook feature_drugs_and_outcomes.ipynb
+jupyter notebook sandbox/feature_drugs_and_outcomes.ipynb
 ```
 
 You may run the code chunks sequentially in the notebooks to regenerate the plots, as well as choose options in the embedded widgets to modify what's plotted.
