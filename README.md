@@ -17,10 +17,11 @@
 
 - The app is run with python 3. If you don't have it, please install python 3 first. You can find out how to install it [here](https://www.python.org/downloads/).
 
-```
-git clone git@github.com:NCBI-Hackathons/SafeDrugs.git 
-cd path-to-SafeDrug-directory 
+``` shell
+git clone git@github.com:NCBI-Hackathons/SafeDrugs.git
+cd path-to-SafeDrug-directory
 pip3 install -r requirements.txt
+quilt install hsiaoyi0504/aeolus_top5drugs
 ```
 
 ### Introduction <a name="introduction"></a>
