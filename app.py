@@ -1,12 +1,13 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from quilt.data.hsiaoyi0504 import aeolus_top5drugs
 from src.python import sd_data, sd_plot
 
 app = dash.Dash()
 app.config.supress_callback_exceptions = True
 
-data = sd_data.file_connector("data/aeolus_top5drugs.feather")
+data = sd_data.file_connector(aeolus_top5drugs.aeolus_top5drugs._data())
 
 uniq_drugs = data.unique_values("drug_concept_name")
 uniq_drugs_list = []
