@@ -30,8 +30,6 @@ for i in range(len(drug_classes_list)):
 
 all_drugs = data.counts_by_feature("age_cat")
 
-##########
-
 app.layout = html.Div(children=[
     dcc.Location(id='url', refresh=True),
     html.Div(id='page-content')
@@ -121,7 +119,7 @@ feature_drugs_page = html.Div(children=[
             dcc.Dropdown(
                 id="chosen-drug-class-input",
                 options=drug_classes_list,
-                value=[drug_classes_list[i]['label'] for i in [1]],
+                value=drug_classes_list[0]['label'],
                 clearable=False),
             html.Br(),
             dcc.Dropdown(id='chosen-drug-class-output', multi=True)
@@ -423,7 +421,7 @@ def display_page(pathname):
         return index_page
 
 
-#get list of drugs or drug categories based on drug class chosen
+# get list of drugs or drug categories based on drug class chosen
 @app.callback(
     dash.dependencies.Output('chosen-drug-class-output', 'options'),
     [dash.dependencies.Input('chosen-drug-class-input', 'value')])
@@ -431,7 +429,7 @@ def set_chosen_drug_class_options(value):
     return [{'label': c, 'value': c} for c in drugs_in_drug_classes[value]]
 
 
-#get list of drugs or drug categories based on drug class chosen
+# get list of drugs or drug categories based on drug class chosen
 @app.callback(
     dash.dependencies.Output('chosen-drug-class-output', 'value'),
     [dash.dependencies.Input('chosen-drug-class-input', 'value')])
@@ -485,8 +483,7 @@ def callback_drug_reports_at_ages_bars(value):
     return sd_plot.bar_plot(title, x_legend, y_legend, this_drug, all_drugs,
                             this_drug_title, all_drugs_title)
 
-
-#enable bootstrap styling
+# enable bootstrap styling
 external_css = [["https://bootswatch.com/3/paper/bootstrap.css"],
                 ["docs/custom.css"]]
 
