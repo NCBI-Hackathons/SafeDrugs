@@ -1,9 +1,9 @@
 
 from pyarrow import feather
 import numpy as np
-import pandas as pd
 
 """ Safe Drugs Data Retrieval Library """
+
 
 class file_connector:
     """ 
