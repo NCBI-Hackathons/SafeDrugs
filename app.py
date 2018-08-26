@@ -42,15 +42,15 @@ index_page = html.Div(children=[
         className='text-center'),
     html.Div(children=[
         dcc.Link(
-        'Go to ADR-age relation Page',
-        href='/age_page',
-        style={
-            'font-size': 16,
-            'color': 'blue'
-        }),
+            'ADR-age relation Page',
+            href='/age_page',
+            style={
+                'font-size': 16,
+                'color': 'blue'
+            }),
         html.Br(),
         dcc.Link(
-            'Investigate Drugs',
+            'Investigate Drugs (under development)',
             href='/feature_drugs_page',
             style={
                 'font-size': 16,
@@ -58,7 +58,7 @@ index_page = html.Div(children=[
             }),
         html.Br(),
         dcc.Link(
-            'Investigate Adverse Reactions',
+            'Investigate Adverse Reactions (under development)',
             href='/feature_outcomes_page',
             style={
                 'font-size': 16,
@@ -66,7 +66,7 @@ index_page = html.Div(children=[
             }),
         html.Br(),
         dcc.Link(
-            'Investigate ADRs',
+            'Investigate ADRs (under development)',
             href='/feature_drugs_and_outcomes_page',
             style={
                 'font-size': 16,
@@ -82,6 +82,49 @@ index_page = html.Div(children=[
     ])
 ], className='container')
 
+age_page = html.Div(children=[
+    html.H1('ADR age relation', className='text-center'),
+    dcc.Link(
+        'Go back to Home Page',
+        href='/',
+        style={
+            'font-size': 16,
+            'color': 'blue',
+
+        }),
+    html.Br(),
+    html.Hr(),
+    html.Div(
+        style={
+            'border': '2px solid black',
+            'float': 'left'
+        },
+        className='col-md-4',
+        children=[
+            html.H1(
+                'How many patients are taking these drugs?',
+                style={
+                    'text-align': 'center',
+                    'font-size': 18
+                }),
+            dcc.Dropdown(
+                id='drug_count',
+                options=uniq_drugs_list,
+                value=uniq_drugs_list[0]['value']),
+            html.Div(id='drug_output', style={'text-align': 'center'})
+        ]
+    ),
+    html.Div(
+        className='col-md-8',
+        children=[
+            dcc.Graph(
+                id='drug-reports-at-ages',
+            )
+        ]
+    )
+])
+
+# TODO: finish other pages
 feature_drugs_page = html.Div(children=[
     html.H1(
         'Investigating Drug usage \nin ADR data',
@@ -123,7 +166,9 @@ feature_drugs_page = html.Div(children=[
                 value=drug_classes_list[0]['label'],
                 clearable=False),
             html.Br(),
-            dcc.Dropdown(id='chosen-drug-class-output', multi=True)
+            dcc.Dropdown(
+                id='chosen-drug-class-output',
+                multi=True)
         ]),
     html.Div(
         className='col-md-6',
@@ -132,6 +177,7 @@ feature_drugs_page = html.Div(children=[
             html.H2('How many reports?'),
             dcc.Graph(id='drug-class-num-reports')
         ]),
+    # Frequency across years of reporting
     html.Div(
         className='col-md-6',
         style={'text-align': 'center'},
@@ -350,54 +396,6 @@ feature_drugs_and_outcomes_page = html.Div(children=[
             dcc.Graph(id='adr-num-reports-across-report-years-by-sex-and-age')
         ])
 ]),
-
-age_page = html.Div(children=[
-    html.H1('ADR age relation'),
-    dcc.Link(
-        'Go to Home Page', href='/', style={
-            'font-size': 16,
-            'color': 'blue'
-        }),
-    html.Br(),
-    dcc.Link(
-        'Go to ADR table Page',
-        href='/table_page',
-        style={
-            'font-size': 16,
-            'color': 'blue'
-        }),
-    html.Hr(),
-    html.Div(
-        style={
-            'class': "col-sm-4",
-            'border': '2px solid black',
-            'float': 'left'
-        },
-        children=[
-            html.H1(
-                'How many patients are taking these drugs?',
-                style={
-                    'text-align': 'center',
-                    'font-size': 18
-                }),
-            dcc.Dropdown(
-                id='drug_count',
-                options=[{
-                    'label': i,
-                    'value': i
-                } for i in uniq_drugs],
-                value=uniq_drugs[0]),
-            html.Div(id='drug_output', style={'text-align': 'center'})
-        ]),
-    dcc.Graph(
-        id='drug-reports-at-ages',
-        style={
-            'class': 'col-sm-4',
-            'float': 'right'
-        },
-    )
-])
-
 
 # Update the index
 # This callback constantly looks at the page location with id="url",
